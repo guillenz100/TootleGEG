@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="utf-8" standalone="no"?>
-<widget xmlns="http://www.w3.org/ns/widgets" xmlns:cdv="http://cordova.apache.org/ns/1.0" id="com.tootlesoft.tootleerp" version="1.0.0">
-    <name>TootleSoft</name>
+<widget xmlns="http://www.w3.org/ns/widgets" xmlns:cdv="http://cordova.apache.org/ns/1.0" id="com.tootlesoft.*" version="1.0.0">
+    <name>TootleBancrea</name>
     <icon src="res/icon.png" />
     <description>
         A sample Apache Cordova application that responds to the deviceready event.
