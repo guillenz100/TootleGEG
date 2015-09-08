@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>Inicio</title>
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <link rel="stylesheet" href="http://code.jquery.com/mobile/1.4.5/jquery.mobile-1.4.5.min.css">
+        <script src="http://code.jquery.com/jquery-1.11.3.min.js"></script>
+        <script src="http://code.jquery.com/mobile/1.4.5/jquery.mobile-1.4.5.min.js"></script>
+        <link href="css/global.css" rel="stylesheet" type="text/css"/>
+        <link href="css/index.css" rel="stylesheet" type="text/css"/>
+    </head>
+    <body>
+        <div class="logo" id="logo"> 
+            <image src="img/logo.png"  alt=""  />
+        </div>
+        <script>
+            function loadPage(strPage, strClass) {
+                if (strPage==="home"){
+                    var divLogo=document.getElementById("logo");
+                    divLogo.setAttribute('style', 'display:block;');
+                    $("#main").empty();
+                }else{
+                    var divLogo=document.getElementById("logo");
+                    divLogo.setAttribute('style', 'display:none;');
+                    $("#main").empty();
+                    $("#main").append("<iframe id='ifr' frameborder='0' class='"+strClass+"'  src='" + strPage + "' />");
+                }
+            }
+            
+            function doOnOrientationChange(){
+              switch (window.orientation){
+              case - 90:
+                  case 90:
+                    var divFooter=document.getElementById("barfooter");
+                    divFooter.setAttribute('style', 'display:none;');
+                    var divIframe=document.getElementById("ifr");
+                    divIframe.setAttribute('style', 'width:100%;');
+                    break;
+                  default:
+                    var divFooter=document.getElementById("barfooter");
+                    divFooter.setAttribute('style', 'display:block;');
+                    var divIframe=document.getElementById("ifr");
+                    divIframe.setAttribute('style', 'width:100%;');
+                    break;
+              }
+            }
+
+            window.addEventListener('orientationchange', doOnOrientationChange);
+        </script>
+        <div data-role="page" id="pageone" style="display:'';" class="app">
+            <div data-role="main" id="main" class="ui-content">
+            </div>
+            <div data-role="footer" id="barfooter" data-position="fixed">
+                <div data-role="navbar">
+                    <ul>
+                        <li><a href="javascript:loadPage('home','window_seamless');" data-theme="b" data-icon="home">Home</a></li>
+                        <li><a href="javascript:loadPage('ventas.html','window_seamless');"  data-theme="b" data-icon="tag">Ventas</a></li>
+                        <li><a href="javascript:loadPage('cobranza.html','window_seamless');"  data-theme="b" data-icon="check">Cobranza</a></li>
+                        <li><a href="javascript:loadPage('facturaslist.html','window_scrollable');"   data-theme="b" data-icon="bars">Facturas</a></li>
+                    </ul>
+                </div>
+            </div>
+        </div> 
+        <script src="js/index.js" type="text/javascript"></script>
+    </body>
+</html>

@@ -1,0 +1,115 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="initial-scale=1.0, user-scalable=no">
+  <meta name="apple-mobile-web-app-capable" content="yes">
+  <meta name="apple-mobile-web-app-status-bar-style" content="black">
+  <title>Lista de Facturas TootleERP</title>
+  <link rel="stylesheet" href="http://code.jquery.com/mobile/1.3.1/jquery.mobile-1.3.1.min.css">
+  <!-- jQuery and jQuery Mobile -->
+  <script src="http://code.jquery.com/jquery-1.9.1.min.js"></script>
+  <script src="http://code.jquery.com/mobile/1.3.1/jquery.mobile-1.3.1.min.js"></script> 
+
+</head>
+<body>
+<!-- Home -->
+<div data-role="page" id="page1">
+    <div data-role="content" >
+        <ul data-role="listview" data-autodividers="true" id="listFacturas" data-filter="true"  data-inset="true">
+            <li><img src="img/ajax-loader.gif" alt=""/></li>
+        </ul>
+    </div>
+</div>
+<script>
+    
+    var GURL = "";
+    var GSTRFIELD1 = "";
+    var GSTRFIELD2 = "";
+    var GSTRFIELD3 = "";
+    var GSTRFIELD4 = "";
+    var GSTRFIELD5 = "";
+    
+    GSTRFIELD1 = "STRNOMBREFACTURACION";
+    GSTRFIELD2 = "FACTURA";
+    GSTRFIELD3 = "TOTAL";
+    GSTRFIELD4 = "FECHA";
+    GSTRFIELD5 = "ESTATUS";
+    
+    var GSTRDATOS;
+    var GBLINFORMACIONCARGADA=false;
+    
+    GURL = "http://www.tootleerp.com/TootleCFDEnterprise/TootleCFDUI/Utilerias/Post.aspx?intConsulta=3&intEmpresa=1";
+    
+    function localData(){
+        $('#listFacturas').empty();
+        document.querySelector('#listFacturas').innerHTML=GSTRDATOS;
+        $('#listFacturas').listview('refresh');
+    }
+    
+    function getData(){
+         if (!GBLINFORMACIONCARGADA){
+            callAjax();
+        }else{
+            localData();
+        }
+    }
+    
+    function numberWithCommas(x) {
+        return x.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ",");
+    }
+    function callAjax() {
+        $.post(GURL, { intEmpresa: "1", intConsulta: "37" }, null, "text")
+            .done(function(data) {
+                data = $.parseXML(data);
+                var strEstatus="";
+                $('#listFacturas').empty();
+                $(data).find("Table").each(function() {
+                    var objOT = $(this);
+                        if (objOT.find(GSTRFIELD5).text()=="2")
+                            strEstatus="green";
+                        else
+                            strEstatus="red";
+                        document.querySelector('#listFacturas').innerHTML += 
+                                "<li>"+
+                                "<img src='img/"+strEstatus+"circle.png'  class='ui-li-icon ui-corner-none' alt='' />"+
+                                "<h3>" +objOT.find(GSTRFIELD1).text()+"</h3>"+
+                                "<p>Fecha "+objOT.find(GSTRFIELD4).text()+"</p>"+
+                                "<p>Factura: "+objOT.find(GSTRFIELD2).text()+"</p>"+
+                                "<p>Total: "+numberWithCommas(parseFloat(objOT.find(GSTRFIELD3).text()).toFixed(2))+"</p>"+
+                                "</li>";
+                        
+                   
+                })
+                GSTRDATOS=document.querySelector('#listFacturas').innerHTML;
+                $( "#listFacturas" ).listview({
+                    autodividers: true,
+                    autodividersSelector: function ( li ) {
+                      var out = "LISTADO DE FACTURAS";
+                      return out;
+                    }
+                  });
+                $('#listFacturas').listview('refresh');
+                GBLINFORMACIONCARGADA=true;
+            }
+        );
+    }
+    getData();
+
+
+    function doOnOrientationChange(){
+        switch (window.orientation){
+        case - 90:
+            case 90:
+                getData();
+                break;
+            default:
+                getData();
+                break;
+        }
+    }
+    window.addEventListener('orientationchange', doOnOrientationChange);
+    
+</script>
+</body>
+</html>

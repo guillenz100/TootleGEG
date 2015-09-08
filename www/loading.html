@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html>
+    <head>
+
+        <meta name="format-detection" content="telephone=no">
+        <meta name="msapplication-tap-highlight" content="no">
+        <meta name="viewport" content="user-scalable=no, initial-scale=1, maximum-scale=1, minimum-scale=1, width=device-width">
+        <title>loading</title>
+        <script src="http://code.jquery.com/jquery-1.10.2.js" type="text/javascript"></script>
+
+        <style type="text/css">
+            .fullsize
+            {
+                position: fixed;
+                top: 0;
+                right: 0;
+                bottom: 0;
+                left: 0;
+            }
+        </style>
+    </head>
+    <body>
+        <div style="text-align:center;" class="fullsize">
+            <img id="loader" style="display:none;" src="img/ajax-loader.gif" alt=""/>
+        </div>
+
+        <script type="text/javascript">
+
+                    $(window).load(function(){
+            /*we are using $(window).load() here because we want the coding to take
+             effect when the image finishes loading. */
+
+            //get the width of the parent
+            var parent_height = $('#loader').parent().height();
+                    //get the width of the image
+                    var image_height = $('#loader').height();
+                    //calculate how far from top the image should be
+                    var top_margin = (parent_height - image_height) / 2;
+                    //and change the margin-top css attribute of the image
+                    $('#loader').css('margin-top', top_margin);
+                    $('#loader').css('display', "");
+            });
+        </script>
+
+    </body>
+</html>

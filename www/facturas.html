@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html>
+    <head>
+
+        <meta name="format-detection" content="telephone=no">
+        <meta name="msapplication-tap-highlight" content="no">
+        <meta name="viewport" content="user-scalable=no, initial-scale=1, maximum-scale=1, minimum-scale=1, width=device-width">
+        <title>Ventas</title>
+        <script type="text/javascript" src="https://www.google.com/jsapi?autoload={'modules':[{'name':'visualization','version':'1.1','packages':['bar']}]}"></script>
+        <script type="text/javascript" src="https://www.google.com/jsapi"></script>
+        <script type="text/javascript" src="cordova.js"></script>
+        <script src="http://code.jquery.com/jquery-1.10.2.js" type="text/javascript"></script>
+        <link href="css/global.css" rel="stylesheet" type="text/css"/>
+        <script src="js/global.js" type="text/javascript"></script>
+    </head>
+    <body>
+        <div class="app fullsize">
+            <div style="text-align:center;" class="logo">
+                <img id="loader"  src="img/ajax-loader.gif" alt=""/>
+            </div>
+
+            <div id="divObject" class="fullsize">
+            </div>
+        </div>
+        <script>
+            /*1 TABLA 2 GRAFICA*/
+            GTIPO = 1;
+            GNUMEROCOLUMNAS = 2;
+            GURL = "http://www.tootleerp.com/TootleCFDEnterprise/TootleCFDUI/Utilerias/Post.aspx?intConsulta=3&intEmpresa=1";
+            GSTRFIELD1 = "FACTURA";
+            GSTRFIELD2 = "TOTAL";
+            GSTRFIELD3 = "";
+            //GWIDTH="95";
+            initGraph();
+            
+        </script>
+    </body>
+</html>
