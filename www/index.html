@@ -14,7 +14,7 @@
             <image src="img/logo.png"  alt=""  />
         </div>
         <script>
-            function loadPage(strPage, strClass) {
+            function loadPage(strPage, strClass, strText) {
                 if (strPage==="home"){
                     var divLogo=document.getElementById("logo");
                     divLogo.setAttribute('style', 'display:block;');
@@ -25,6 +25,8 @@
                     $("#main").empty();
                     $("#main").append("<iframe id='ifr' frameborder='0' class='"+strClass+"'  src='" + strPage + "' />");
                 }
+                $("#divHeader").empty();
+                $("#divHeader").append("<h1>"+strText+"</h1>");
             }
             
             function doOnOrientationChange(){
@@ -48,7 +50,7 @@
             window.addEventListener('orientationchange', doOnOrientationChange);
         </script>
         <div data-role="page" id="pageone" style="display:'';" class="app">
-            <div data-role="header">
+            <div data-role="header" data-theme="b" id='divHeader' >
                 <h1>Inicio</h1>
             </div>
             <div data-role="main" id="main" class="ui-content">
@@ -56,10 +58,10 @@
             <div data-role="footer" id="barfooter" data-position="fixed">
                 <div data-role="navbar" >
                     <ul>
-                        <li><a href="javascript:loadPage('home','window_seamless');" data-theme="a" data-icon="home">Inicio</a></li>
-                        <li><a href="javascript:loadPage('aprobar.html','window_scrollable');"  data-theme="a" data-icon="tag">Aprobar</a></li>
-                        <li><a href="javascript:loadPage('cobranza.html','window_seamless');"  data-theme="a" data-icon="check">Autorizar</a></li>
-                        <li><a href="javascript:loadPage('facturaslist.html','window_scrollable');"   data-theme="a" data-icon="bars">Estadisticas</a></li>
+                        <li><a href="javascript:loadPage('home','window_seamless','Inicio');" data-theme="a" data-icon="home">Inicio</a></li>
+                        <li><a href="javascript:loadPage('aprobar.html','window_scrollable','Aprobar');"  data-theme="a" data-icon="tag">Aprobar</a></li>
+                        <li><a href="javascript:loadPage('cobranza.html','window_seamless','Autorizar');"  data-theme="a" data-icon="check">Autorizar</a></li>
+                        <li><a href="javascript:loadPage('facturaslist.html','window_scrollable','Estadisticas');"   data-theme="a" data-icon="bars">Estadisticas</a></li>
                     </ul>
                 </div>
             </div>
