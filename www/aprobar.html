@@ -5,7 +5,7 @@
   <meta name="viewport" content="initial-scale=1.0, user-scalable=no">
   <meta name="apple-mobile-web-app-capable" content="yes">
   <meta name="apple-mobile-web-app-status-bar-style" content="black">
-  <title>Lista de Facturas TootleERP</title>
+  <title>Solicitudes por Aprobar</title>
   <link rel="stylesheet" href="http://code.jquery.com/mobile/1.3.1/jquery.mobile-1.3.1.min.css">
   <!-- jQuery and jQuery Mobile -->
   <script src="http://code.jquery.com/jquery-1.9.1.min.js"></script>
@@ -30,16 +30,16 @@
     var GSTRFIELD4 = "";
     var GSTRFIELD5 = "";
     
-    GSTRFIELD1 = "STRNOMBREFACTURACION";
-    GSTRFIELD2 = "FACTURA";
-    GSTRFIELD3 = "TOTAL";
-    GSTRFIELD4 = "FECHA";
+    GSTRFIELD1 = "intFolio";
+    GSTRFIELD2 = "strProveedor";
+    GSTRFIELD3 = "datFechaSolicitud";
+    GSTRFIELD4 = "dblTotal";
     GSTRFIELD5 = "ESTATUS";
     
     var GSTRDATOS;
     var GBLINFORMACIONCARGADA=false;
     
-    GURL = "http://www.tootleerp.com/TootleCFDEnterprise/TootleCFDUI/Utilerias/Post.aspx?intConsulta=3&intEmpresa=1";
+    GURL = "http://www.tootleerp.com/TootleCFDEnterprise/TootleCFDUI/Utilerias/Post.aspx?intConsulta=14&intEmpresa=1";
     
     function localData(){
         $('#listFacturas').empty();
@@ -66,17 +66,12 @@
                 $('#listFacturas').empty();
                 $(data).find("Table").each(function() {
                     var objOT = $(this);
-                        if (objOT.find(GSTRFIELD5).text()=="2")
-                            strEstatus="green";
-                        else
-                            strEstatus="red";
                         document.querySelector('#listFacturas').innerHTML += 
                                 "<li>"+
-                                "<img src='img/"+strEstatus+"circle.png'  class='ui-li-icon ui-corner-none' alt='' />"+
                                 "<h3>" +objOT.find(GSTRFIELD1).text()+"</h3>"+
-                                "<p>Fecha "+objOT.find(GSTRFIELD4).text()+"</p>"+
-                                "<p>Factura: "+objOT.find(GSTRFIELD2).text()+"</p>"+
-                                "<p>Total: "+numberWithCommas(parseFloat(objOT.find(GSTRFIELD3).text()).toFixed(2))+"</p>"+
+                                "<p>Fecha "+objOT.find(GSTRFIELD2).text()+"</p>"+
+                                "<p>Factura: "+objOT.find(GSTRFIELD3).text()+"</p>"+
+                                "<p>Total: "+numberWithCommas(parseFloat(objOT.find(GSTRFIELD4).text()).toFixed(2))+"</p>"+
                                 "</li>";
                         
                    
