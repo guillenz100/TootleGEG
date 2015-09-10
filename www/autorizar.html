@@ -5,7 +5,7 @@
   <meta name="viewport" content="initial-scale=1.0, user-scalable=no">
   <meta name="apple-mobile-web-app-capable" content="yes">
   <meta name="apple-mobile-web-app-status-bar-style" content="black">
-  <title>Solicitudes por Aprobar</title>
+  <title>Solicitudes por Autorizar</title>
   <link rel="stylesheet" href="http://code.jquery.com/mobile/1.3.1/jquery.mobile-1.3.1.min.css">
   <!-- jQuery and jQuery Mobile -->
   <script src="http://code.jquery.com/jquery-1.9.1.min.js"></script>
@@ -41,7 +41,7 @@
     var GSTRDATOS;
     var GBLINFORMACIONCARGADA=false;
     
-    GURL = "http://www.tootleerp.com/TootleCFDEnterprise/TootleCFDUI/Utilerias/Post.aspx?intConsulta=14&intEmpresa=1";
+    GURL = "http://www.tootleerp.com/TootleCFDEnterprise/TootleCFDUI/Utilerias/Post.aspx?intConsulta=15&intEmpresa=1";
     
     function localData(){
         $('#listFacturas').empty();
@@ -69,12 +69,10 @@
                     var objOT = $(this);
                         document.querySelector('#listFacturas').innerHTML += 
                                 "<li group='"+objOT.find(GSTRFIELD6).text()+"'>"+
-                                "<a href=#>"+
                                 "<h3>" +objOT.find(GSTRFIELD1).text()+"</h3>"+
                                 "<p>Concepto "+objOT.find(GSTRFIELD2).text()+"</p>"+
                                 "<p>Fecha "+objOT.find(GSTRFIELD3).text()+"</p>"+
                                 "<p>Total "+numberWithCommas(parseFloat(objOT.find(GSTRFIELD4).text()).toFixed(2))+"</p>"+
-                                "</a>"
                                 "</li>";
                         
                    
