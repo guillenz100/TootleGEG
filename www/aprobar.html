@@ -14,12 +14,12 @@
 </head>
 <body>
 <!-- Home -->
-<div data-role="page" id="page1">
-    <div data-role="content" >
-        <ul data-role="listview" data-autodividers="true" id="listFacturas" data-filter="true"  data-inset="true">
+<div data-role="page" id="page1" >
+    
+        <ul data-role="listview" data-autodividers="true" id="listFacturas" data-filter="false"  data-inset="true">
             <li><img src="img/ajax-loader.gif" alt=""/></li>
         </ul>
-    </div>
+    
 </div>
 <script>
     
@@ -34,7 +34,7 @@
     GSTRFIELD2 = "strProveedor";
     GSTRFIELD3 = "datFechaSolicitud";
     GSTRFIELD4 = "dblTotal";
-    GSTRFIELD5 = "ESTATUS";
+    GSTRFIELD5 = "strGrupo";
     
     var GSTRDATOS;
     var GBLINFORMACIONCARGADA=false;
@@ -62,12 +62,11 @@
         $.post(GURL, { intEmpresa: "1", intConsulta: "37" }, null, "text")
             .done(function(data) {
                 data = $.parseXML(data);
-                var strEstatus="";
                 $('#listFacturas').empty();
                 $(data).find("Table").each(function() {
                     var objOT = $(this);
                         document.querySelector('#listFacturas').innerHTML += 
-                                "<li>"+
+                                "<li group='"+objOT.find(GSTRFIELD5).text()+"'>"+
                                 "<h3>" +objOT.find(GSTRFIELD1).text()+"</h3>"+
                                 "<p>Fecha "+objOT.find(GSTRFIELD2).text()+"</p>"+
                                 "<p>Factura: "+objOT.find(GSTRFIELD3).text()+"</p>"+
@@ -80,7 +79,7 @@
                 $( "#listFacturas" ).listview({
                     autodividers: true,
                     autodividersSelector: function ( li ) {
-                      var out = "LISTADO DE FACTURAS";
+                      var out = li.attr('group');
                       return out;
                     }
                   });

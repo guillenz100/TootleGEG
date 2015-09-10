@@ -6,6 +6,13 @@
     text-align:center;
     margin:0px 0px 0px -25px;  /* img 50 px */
 }
+/* Portrait layout (default) */
+.app {
+    background:url(../img/background.png);
+    background-repeat: repeat;
+}
+
+
 
  .fullsize{
     position: fixed;
