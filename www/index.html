@@ -14,6 +14,10 @@
             <img src="img/logo.png"  alt=""  />
         </div>
         <script>
+            function verSolicitud(id){
+                sessionStorage.setItem("idsolicitud",id);
+                loadPage("versolicitud.html","window_seamless","Solicitud "+id);
+            }
             function loadPage(strPage, strClass, strText) {
                 if (strPage==="home"){
                     $("#imgLogo").css('display','block');
@@ -46,7 +50,7 @@
         </script>
         <div data-role="page" id="pageone" style="display:'';" class="app">
             <div data-role="header" data-theme="b" id='divHeader'  data-position="fixed">
-                <a  href="javascript:loadPage('home','window_seamless','Inicio');"  class="ui-btn ui-icon-home ui-btn-icon-left">Inicio</a>
+                <a  id='hHeaderRef' href="javascript:loadPage('home','window_seamless','Inicio');"  data-icon="home">Inicio</a>
                 <h1 id='hHeader'>Inicio</h1>
             </div>
             <div data-role="main" id="main" class="ui-content">

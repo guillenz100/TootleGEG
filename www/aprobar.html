@@ -63,10 +63,7 @@
         return x.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ",");
     }
     
-    function verSolicitud(id){
-        sessionStorage.setItem("idsolicitud",id);
-        window.location="versolicitud.html";
-    }
+  
     function callAjax() {
         $.post(GURL, { intEmpresa: "1", intConsulta: "37" }, null, "text")
             .done(function(data) {
@@ -76,7 +73,7 @@
                     var objOT = $(this);
                         document.querySelector('#listFacturas').innerHTML += 
                                 "<li group='"+objOT.find(GSTRFIELD6).text()+"'>"+
-                                "<a href='javascript:verSolicitud("+objOT.find(GSTRFIELD7).text()+");'>"+
+                                "<a href='javascript:parent.verSolicitud("+objOT.find(GSTRFIELD7).text()+");'>"+
                                 "<h3>" +objOT.find(GSTRFIELD1).text()+"</h3>"+
                                 "<p>Concepto "+objOT.find(GSTRFIELD2).text()+"</p>"+
                                 "<p>Fecha "+objOT.find(GSTRFIELD3).text()+"</p>"+
