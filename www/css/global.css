@@ -1,16 +1,4 @@
 
-.logo {
-    position:absolute;             /* position in the center of the screen */
-    left:50%;
-    top:25%;
-    text-align:center;
-    margin:0px 0px 0px -25px; /*image 50px*/
-}
-
-.app {
-    background:url(../img/background.png);
-    background-repeat: repeat;
-}
  .fullsize{
     position: fixed;
     top: 0;

@@ -51,7 +51,7 @@ body {
     top:25%;
     z-index: 9;
     text-align:center;
-    margin:0px 0px 0px -140px;  /* img 280 px */
+    margin:0px 0px 0px -125px;  /* img 250 px */
 }
 /* Portrait layout (default) */
 .app {
