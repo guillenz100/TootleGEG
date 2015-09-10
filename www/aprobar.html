@@ -17,7 +17,7 @@
 <div data-role="page" id="page1" >
     
         <ul data-role="listview" data-autodividers="true" id="listFacturas" data-filter="false"  data-inset="true">
-            <li><img src="img/ajax-loader.gif" alt=""/></li>
+            <li><center><img src="img/ajax-loader.gif" alt=""/></center></li>
         </ul>
     
 </div>
@@ -30,6 +30,7 @@
     var GSTRFIELD4 = "";
     var GSTRFIELD5 = "";
     var GSTRFIELD6 = "";
+    var GSTRFIELD7 = "";
     
     GSTRFIELD1 = "strProveedor";
     GSTRFIELD2 = "strConcepto";
@@ -37,6 +38,7 @@
     GSTRFIELD4 = "dblTotal";
     GSTRFIELD5 = "strConcepto";
     GSTRFIELD6 = "strGrupo";
+    GSTRFIELD7 = "intFolio";
     
     var GSTRDATOS;
     var GBLINFORMACIONCARGADA=false;
@@ -60,6 +62,11 @@
     function numberWithCommas(x) {
         return x.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ",");
     }
+    
+    function verSolicitud(id){
+        sessionStorage.setItem("idsolicitud",id);
+        window.location="versolicitud.html";
+    }
     function callAjax() {
         $.post(GURL, { intEmpresa: "1", intConsulta: "37" }, null, "text")
             .done(function(data) {
@@ -69,7 +76,7 @@
                     var objOT = $(this);
                         document.querySelector('#listFacturas').innerHTML += 
                                 "<li group='"+objOT.find(GSTRFIELD6).text()+"'>"+
-                                "<a href=#>"+
+                                "<a href='javascript:verSolicitud("+objOT.find(GSTRFIELD7).text()+");'>"+
                                 "<h3>" +objOT.find(GSTRFIELD1).text()+"</h3>"+
                                 "<p>Concepto "+objOT.find(GSTRFIELD2).text()+"</p>"+
                                 "<p>Fecha "+objOT.find(GSTRFIELD3).text()+"</p>"+
