@@ -3,9 +3,20 @@
     position:absolute;             /* position in the center of the screen */
     left:50%;
     top:25%;
+    z-index: 2;
+    text-align:center;
+    margin:0px 0px 0px -140px;  /* img 280 px */
+}
+
+
+.loader {
+    position:absolute;             /* position in the center of the screen */
+    left:50%;
+    top:25%;
     text-align:center;
     margin:0px 0px 0px -25px;  /* img 50 px */
 }
+
 /* Portrait layout (default) */
 .app {
     background:url(../img/background.png);

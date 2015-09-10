@@ -7,42 +7,36 @@
         <script src="http://code.jquery.com/jquery-1.11.3.min.js"></script>
         <script src="http://code.jquery.com/mobile/1.4.5/jquery.mobile-1.4.5.min.js"></script>
         <link href="css/global.css" rel="stylesheet" type="text/css"/>
-        <link href="css/index.css" rel="stylesheet" type="text/css"/>
+
     </head>
-    <body style="font-size: smaller;">
-        <div class="logo" id="logo"> 
-            <image src="img/logo.png"  alt=""  />
+    <body>
+        <div class="logo" id="imgLogo"> 
+            <img src="img/logo.png"  alt=""  />
         </div>
         <script>
             function loadPage(strPage, strClass, strText) {
                 if (strPage==="home"){
-                    var divLogo=document.getElementById("logo");
-                    divLogo.setAttribute('style', 'display:block;');
+                    $("#imgLogo").css('display','block');
                     $("#main").empty();
                 }else{
-                    var divLogo=document.getElementById("logo");
-                    divLogo.setAttribute('style', 'display:none;');
+                   $("#imgLogo").css('display','none');
                     $("#main").empty();
                     $("#main").append("<iframe id='ifr' frameborder='0' class='"+strClass+"'  src='" + strPage + "' />");
                 }
-                $("#divHeader").empty();
-                $("#divHeader").append("<h1>"+strText+"</h1>");
+                $("#hHeader").empty();
+                $("#hHeader").append(strText);
             }
             
             function doOnOrientationChange(){
               switch (window.orientation){
               case - 90:
                   case 90:
-                    var divFooter=document.getElementById("barfooter");
-                    divFooter.setAttribute('style', 'display:none;');
-                    var divIframe=document.getElementById("ifr");
-                    divIframe.setAttribute('style', 'width:100%;');
+                    $("#barfooter").css('display','none');
+                    $("#ifr").css('width','100%');
                     break;
                   default:
-                    var divFooter=document.getElementById("barfooter");
-                    divFooter.setAttribute('style', 'display:block;');
-                    var divIframe=document.getElementById("ifr");
-                    divIframe.setAttribute('style', 'width:100%;');
+                    $("#barfooter").css('display','block');
+                    $("#ifr").css('width','100%');
                     break;
               }
             }
@@ -51,7 +45,8 @@
         </script>
         <div data-role="page" id="pageone" style="display:'';" class="app">
             <div data-role="header" data-theme="b" id='divHeader' >
-                <h1>Inicio</h1>
+                <a  href="javascript:loadPage('home','window_seamless','Inicio');"  class="ui-btn ui-icon-home ui-btn-icon-left">Inicio</a>
+                <h1 id='hHeader'>Inicio</h1>
             </div>
             <div data-role="main" id="main" class="ui-content">
             </div>
