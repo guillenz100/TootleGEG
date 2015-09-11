@@ -1,5 +1,6 @@
 /*1 TABLA 2 GRAFICA*/
 var GTIPO = 0;
+var GMULTICOLOR=1;
 var GNUMEROCOLUMNAS = 3;
 var GSTRFIELD1 = "MES";
 var GSTRFIELD2 = "ANTERIOR";
@@ -9,7 +10,7 @@ var GWIDTH="85%";
 var GMAXVALUE = 0;
 var GARR = [];
 var GARR_empty = [];
-var colors = ["#57EF25", "#F5102A", "#050505", "#E4DB23", "#1320B4","#FE9A2E","#E6E6E6","#FE2EC8","#088A29","#F5A9F2","#61210B"];
+var colors=[];
 var GBLROTAR;
 var GBLFIRSTLOAD = true;
 var GDATA;
@@ -27,6 +28,8 @@ var GOPTIONS = {
 
 
 function initGraph(){
+    if (GMULTICOLOR==1)
+        colors = ["#57EF25", "#F5102A", "#050505", "#E4DB23", "#1320B4","#FE9A2E","#E6E6E6","#FE2EC8","#088A29","#F5A9F2","#5E97F6"];
 
     if (GNUMEROCOLUMNAS == 2) {
         if (GTIPO == 2) {
