@@ -31,25 +31,24 @@ and open the template in the editor.
                 
                 <label for="txtTotal">Total</label>
                 <input type="text" readonly name="txtTotal" id="txtTotal"/>
+                
+                 <label for="txtMoneda">Moneda</label>
+                <input type="text" readonly name="txtMoneda" id="txtMoneda"/>
 
                 <button class ="ui-btn ui-btn-b">Aprobar</button>
             </div>
         </form>
         <script>
         
-            
             $( document ).ready(function() {
-
-
-                GURL += "16&param0="+sessionStorage.getItem("idsolicitud");
+                GSERVERURL += "16&param0="+sessionStorage.getItem("idsolicitud");
                 callAjax();
-                //$("#txtSolicitudEnc").val(sessionStorage.getItem("idsolicitud"));
                 //alert(JSON.stringify(window.location, null, '  '));
             });
 
 
             function callAjax() {
-                $.post(GURL, { intEmpresa: "1", intConsulta: "37" }, null, "text")
+                $.post(GSERVERURL, { intEmpresa: "1", intConsulta: "37" }, null, "text")
                     .done(function(data) {
                         data = parseXML(data);
                         if(data==null)

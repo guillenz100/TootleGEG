@@ -26,7 +26,7 @@
     var GSTRDATOS;
     var GBLINFORMACIONCARGADA=false;
     
-    GURL +="14";
+    GSERVERURL +="14";
     
     function localData(){
         $('#listFacturas').empty();
@@ -43,7 +43,7 @@
     }
   
     function callAjax() {
-        $.post(GURL, { intEmpresa: "1", intConsulta: "37" }, null, "text")
+        $.post(GSERVERURL, { intEmpresa: "1", intConsulta: "37" }, null, "text")
             .done(function(data) {
                 data = parseXML(data);
                 if(data==null)
@@ -76,8 +76,10 @@
             }
         );
     }
-    getData();
-
+    
+   $( document ).ready(function() {
+        getData();
+    });
 
     function doOnOrientationChange(){
         switch (window.orientation){

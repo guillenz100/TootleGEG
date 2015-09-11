@@ -4,7 +4,8 @@
  * and open the template in the editor.
  */
 
-var GURL = "http://www.tootleerp.com/TootleCFDEnterprise/TootleCFDUI/Utilerias/Post.aspx?intEmpresa=1&intConsulta=";
+var GSERVERURL = "http://www.tootleerp.com/TootleCFDEnterprise/TootleCFDUI/Utilerias/Post.aspx?intEmpresa=1&intConsulta=";
+
 function parseXML(objData) {
     objData = $.parseXML(objData);
     $(objData).find("Error").each(function () {
@@ -20,3 +21,11 @@ function numberWithCommas(x) {
     return x.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ",");
 }
     
+/**
+* Determine whether the file loaded from PhoneGap or not
+*/
+function isPhoneGap() {
+    return (window.cordova || window.PhoneGap || window.phonegap)
+    && /^file:\/{3}[^\/]/i.test(window.location.href)
+    && /ios|iphone|ipod|ipad|android/i.test(navigator.userAgent);
+}
