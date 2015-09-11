@@ -16,7 +16,7 @@
         <script>
             function verSolicitud(id){
                 sessionStorage.setItem("idsolicitud",id);
-                loadPage("versolicitud.html","window_seamless","Aprobar Solicitud","Aprobar");
+                loadPage("versolicitud.html","window_seamless","Aprobar","Aprobar");
             }
             function loadPage(strPage, strClass, strText, strKeyBack) {
                 
@@ -67,7 +67,7 @@
         </script>
         <div data-role="page" id="pageone" style="display:'';" class="app">
             <div data-role="header" data-theme="b" id='divHeader'  data-position="fixed">
-                <a  id='hHeaderRef'  data-icon="home"></a>
+                <a  id='hHeaderRef'  data-icon="home">home</a>
                 <h1 id='hHeader'></h1>
             </div>
             <div data-role="main" id="main" class="ui-content">
@@ -78,7 +78,7 @@
                         <li><a href="javascript:loadPage('home','window_seamless','Inicio','home');" data-theme="a" data-icon="home">Inicio</a></li>
                         <li><a href="javascript:loadPage('aprobar.html','window_scrollable','Aprobar','home');"  data-theme="a" data-icon="tag">Aprobar</a></li>
                         <li><a href="javascript:loadPage('autorizar.html','window_scrollable','Autorizar','home');"  data-theme="a" data-icon="check">Autorizar</a></li>
-                        <li><a href="javascript:loadPage('facturaslist.html','window_scrollable','Estadisticas','home');"   data-theme="a" data-icon="bars">Estadisticas</a></li>
+                        <li><a href="javascript:loadPage('chart_transferencias.html','window_seamless','Transferencias','home');"   data-theme="a" data-icon="bars">Transferencias</a></li>
                         <li><a href="javascript:loadPage('configurar.html','window_seamless','Configurar','home');"   data-theme="a" data-icon="gear">Config</a></li>
                     </ul>
                 </div>

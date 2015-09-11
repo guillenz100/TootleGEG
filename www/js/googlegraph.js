@@ -1,16 +1,15 @@
 /*1 TABLA 2 GRAFICA*/
 var GTIPO = 0;
 var GNUMEROCOLUMNAS = 3;
-var GURL = "http://www.tootleerp.com/TootleCFDEnterprise/TootleCFDUI/Utilerias/Post.aspx?intConsulta=12&intEmpresa=1";
 var GSTRFIELD1 = "MES";
 var GSTRFIELD2 = "ANTERIOR";
-var GSTRFIELD3 = "ACTUAL";
+var GSTRFIELD3 = "";
 var GWIDTH="85%";
 
 var GMAXVALUE = 0;
 var GARR = [];
 var GARR_empty = [];
-var colors = ["#57EF25", "#F5102A", "#050505", "#E4DB23", "#1320B4"];
+var colors = ["#57EF25", "#F5102A", "#050505", "#E4DB23", "#1320B4","#FE9A2E","#E6E6E6","#FE2EC8","#088A29","#F5A9F2","#61210B"];
 var GBLROTAR;
 var GBLFIRSTLOAD = true;
 var GDATA;
@@ -55,45 +54,44 @@ function initGraph(){
     google.setOnLoadCallback(callAjax);
 }
 
-function numberWithCommas(x) {
-    return x.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ",");
-}
 
 function callAjax() {
     var intCount = 0;
     $.post(GURL, { intEmpresa: "1", intConsulta: "37" }, null, "text")
         .done(function(data) {
-            data = $.parseXML(data)
+            data = parseXML(data);
+            if(data==null)
+                return;
             intCount = 0;
             $(data).find("Table").each(function() {
-                var objOT = $(this);
+                var objNode = $(this);
                 if (GNUMEROCOLUMNAS == 2) {
                     if (GTIPO == 2) {
-                        GARR.push([objOT.find(GSTRFIELD1).text(), parseFloat(objOT.find(GSTRFIELD2).text()), colors[intCount], numberWithCommas(parseFloat(objOT.find(GSTRFIELD2).text()).toFixed(2))]);
-                        GARR_empty.push([objOT.find(GSTRFIELD1).text(), 0, colors[intCount], ""]);
+                        GARR.push([objNode.find(GSTRFIELD1).text(), parseFloat(objNode.find(GSTRFIELD2).text()), colors[intCount], numberWithCommas(objNode.find(GSTRFIELD2).text())]);
+                        GARR_empty.push([objNode.find(GSTRFIELD1).text(), 0, colors[intCount], ""]);
                         intCount++;
                     }
                     if (GTIPO == 1) {
-                        GARR.push([objOT.find(GSTRFIELD1).text(), parseFloat(objOT.find(GSTRFIELD2).text()).toFixed(2)]);
-                        GARR_empty.push([objOT.find(GSTRFIELD1).text(), 0]);
+                        GARR.push([objNode.find(GSTRFIELD1).text(), parseFloat(objNode.find(GSTRFIELD2).text()).toFixed(2)]);
+                        GARR_empty.push([objNode.find(GSTRFIELD1).text(), 0]);
                     }
 
-                    if (parseFloat(objOT.find(GSTRFIELD2).text()) > GMAXVALUE)
-                        GMAXVALUE = parseFloat(objOT.find(GSTRFIELD2).text());
+                    if (parseFloat(objNode.find(GSTRFIELD2).text()) > GMAXVALUE)
+                        GMAXVALUE = parseFloat(objNode.find(GSTRFIELD2).text());
                 }
                 if (GNUMEROCOLUMNAS == 3) {
                     if (GTIPO == 2) {
-                        GARR.push([objOT.find(GSTRFIELD1).text(), parseFloat(objOT.find(GSTRFIELD2).text()), parseFloat(objOT.find(GSTRFIELD3).text()), numberWithCommas(parseFloat(objOT.find(GSTRFIELD3).text()).toFixed(2))]);
-                        GARR_empty.push([objOT.find(GSTRFIELD1).text(), 0, 0, ""]);
+                        GARR.push([objNode.find(GSTRFIELD1).text(), parseFloat(objNode.find(GSTRFIELD2).text()), parseFloat(objNode.find(GSTRFIELD3).text()), numberWithCommas(objNode.find(GSTRFIELD3).text())]);
+                        GARR_empty.push([objNode.find(GSTRFIELD1).text(), 0, 0, ""]);
                         intCount++;
                     }
                     if (GTIPO == 1) {
-                        GARR.push([objOT.find(GSTRFIELD1).text(), parseFloat(objOT.find(GSTRFIELD2).text()), parseFloat(objOT.find(GSTRFIELD3).text())]);
-                        GARR_empty.push([objOT.find(GSTRFIELD1).text(), 0, 0]);
+                        GARR.push([objNode.find(GSTRFIELD1).text(), parseFloat(objNode.find(GSTRFIELD2).text()), parseFloat(objNode.find(GSTRFIELD3).text())]);
+                        GARR_empty.push([objNode.find(GSTRFIELD1).text(), 0, 0]);
                     }
 
-                    if (parseFloat(objOT.find(GSTRFIELD3).text()) > GMAXVALUE)
-                        GMAXVALUE = parseFloat(objOT.find(GSTRFIELD3).text());
+                    if (parseFloat(objNode.find(GSTRFIELD3).text()) > GMAXVALUE)
+                        GMAXVALUE = parseFloat(objNode.find(GSTRFIELD3).text());
                 }
                 //Se actualiza max value
                 GOPTIONS = {
