@@ -6,6 +6,7 @@ var GSTRFIELD1 = "MES";
 var GSTRFIELD2 = "ANTERIOR";
 var GSTRFIELD3 = "";
 var GWIDTH="85%";
+var GURL = "http://www.tootleerp.com/TootleCFDEnterprise/TootleCFDUI/Utilerias/Post.aspx?intEmpresa=1&intConsulta=";
 
 var GMAXVALUE = 0;
 var GARR = [];
