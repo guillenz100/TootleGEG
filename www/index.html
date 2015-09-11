@@ -16,9 +16,17 @@
         <script>
             function verSolicitud(id){
                 sessionStorage.setItem("idsolicitud",id);
-                loadPage("versolicitud.html","window_seamless","Solicitud "+id);
+                loadPage("versolicitud.html","window_seamless","Aprobar Solicitud","Aprobar");
             }
-            function loadPage(strPage, strClass, strText) {
+            function loadPage(strPage, strClass, strText, strKeyBack) {
+                
+                var strURLBack="javascript:loadPage('home','window_seamless','Inicio','home');";
+                var strIconBack="home";
+                if (strKeyBack==="Aprobar"){
+                    strIconBack="carat-l";
+                    strURLBack="javascript:loadPage('aprobar.html','window_scrollable','Aprobar','home');";
+                }
+                        
                 if (strPage==="home"){
                     $("#imgLogo").css('display','block');
                     $("#main").empty();
@@ -29,6 +37,15 @@
                 }
                 $("#hHeader").empty();
                 $("#hHeader").append(strText);
+                
+                $("#hHeaderRef").removeAttr("href");
+                $("#hHeaderRef").removeAttr("data-icon");
+                $("#hHeaderRef").attr("href",strURLBack);
+                $("#hHeaderRef").attr("data-icon",strIconBack);
+                $("#hHeaderRef").attr("class","ui-link ui-btn-left ui-btn ui-icon-"+strIconBack+" ui-btn-icon-left ui-shadow ui-corner-all");
+                $("#hHeaderRef").empty();
+                
+                $("#hHeaderRef").append(strKeyBack);
             }
             
             function doOnOrientationChange(){
@@ -50,19 +67,19 @@
         </script>
         <div data-role="page" id="pageone" style="display:'';" class="app">
             <div data-role="header" data-theme="b" id='divHeader'  data-position="fixed">
-                <a  id='hHeaderRef' href="javascript:loadPage('home','window_seamless','Inicio');"  data-icon="home">Inicio</a>
-                <h1 id='hHeader'>Inicio</h1>
+                <a  id='hHeaderRef'  data-icon="home"></a>
+                <h1 id='hHeader'></h1>
             </div>
             <div data-role="main" id="main" class="ui-content">
             </div>
             <div data-role="footer" id="barfooter" data-position="fixed">
                 <div data-role="navbar" >
                     <ul>
-                        <li><a href="javascript:loadPage('home','window_seamless','Inicio');" data-theme="a" data-icon="home">Inicio</a></li>
-                        <li><a href="javascript:loadPage('aprobar.html','window_scrollable','Aprobar');"  data-theme="a" data-icon="tag">Aprobar</a></li>
-                        <li><a href="javascript:loadPage('autorizar.html','window_scrollable','Autorizar');"  data-theme="a" data-icon="check">Autorizar</a></li>
-                        <li><a href="javascript:loadPage('facturaslist.html','window_scrollable','Estadisticas');"   data-theme="a" data-icon="bars">Estadisticas</a></li>
-                        <li><a href="javascript:loadPage('configurar.html','window_seamless','Configurar');"   data-theme="a" data-icon="gear">Config</a></li>
+                        <li><a href="javascript:loadPage('home','window_seamless','Inicio','home');" data-theme="a" data-icon="home">Inicio</a></li>
+                        <li><a href="javascript:loadPage('aprobar.html','window_scrollable','Aprobar','home');"  data-theme="a" data-icon="tag">Aprobar</a></li>
+                        <li><a href="javascript:loadPage('autorizar.html','window_scrollable','Autorizar','home');"  data-theme="a" data-icon="check">Autorizar</a></li>
+                        <li><a href="javascript:loadPage('facturaslist.html','window_scrollable','Estadisticas','home');"   data-theme="a" data-icon="bars">Estadisticas</a></li>
+                        <li><a href="javascript:loadPage('configurar.html','window_seamless','Configurar','home');"   data-theme="a" data-icon="gear">Config</a></li>
                     </ul>
                 </div>
             </div>

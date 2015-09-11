@@ -18,11 +18,10 @@ and open the template in the editor.
     </head>
     <body>
         <form class="ui-body ui-body-b">
+            <center><img src="img/ajax-loader.gif" id="imgLoader" alt=""/></center>
             <div class="ui-field-contain" data-role='fieldcontain' >
-
-                   <label for="txtSolicitudEnc">Solicitud</label>
-                   
-                <input type="text" readonly class="ui-bar-b" name="txtSolicitudEnc" id="txtSolicitudEnc"/>
+                <label for="txtFolio">Folio</label>
+                <input type="text" readonly  name="txtFolio" id="txtFolio"/>
                 
                 <label for="txtProveedor">Proveedor</label>
                 <input type="text" readonly name="txtProveedor" id="txtProveedor"/>
@@ -57,8 +56,9 @@ and open the template in the editor.
                             return;
 
                         $(data).find("Table").each(function() {
+                            $("#imgLoader").css("display","none");
                             var objNode = $(this);
-                            $("#txtSolicitudEnc").val(objNode.find("intSolicitudChequeEnc").text());
+                            $("#txtFolio").val(objNode.find("intFolio").text());
                             $("#txtProveedor").val(objNode.find("strProveedor").text());
                             $("#txtConcepto").val(objNode.find("strConcepto").text());
                             $("#txtTotal").val(numberWithCommas(objNode.find("dblTotal").text()));
