@@ -7,13 +7,17 @@
 var GSERVERURL = "http://www.tootleerp.com/TootleCFDEnterprise/TootleCFDUI/Utilerias/Post.aspx?intEmpresa=1&intConsulta=";
 
 function parseXML(objData) {
-    objData = $.parseXML(objData);
-    $(objData).find("Error").each(function () {
-        var objNode = $(this);
-        alert(objNode.find("Descripcion").text());
-        return null;
-    });
-    return objData;
+    try {
+        objData = $.parseXML(objData);
+        $(objData).find("Error").each(function () {
+            var objNode = $(this);
+            alert(objNode.find("Descripcion").text());
+            return null;
+        });
+        return objData;
+    } catch (e) {
+       alert(e); 
+    }
 }
 
 function numberWithCommas(x) {
