@@ -24,20 +24,20 @@ and open the template in the editor.
             <div data-role="content">
                 <form>
                   
-                        <label for="txtFolio">Folio</label>
-                        <input type="text"  disabled name="txtFolio" id="txtFolio"/>
+                        <label for="txtFolio" style="font-weight: bold;">Folio</label>
+                        <div id="txtFolio"></div>
 
-                        <label for="txtProveedor">Proveedor</label>
-                        <input type="text" disabled name="txtProveedor" id="txtProveedor"/>
+                        <label for="txtProveedor" style="font-weight: bold;">Proveedor</label>
+                        <div id="txtProveedor"></div>
 
-                        <label for="txtConcepto">Concepto</label>
-                        <input type="text" disabled name="txtConcepto" id="txtConcepto"/>
+                        <label for="txtConcepto" style="font-weight: bold;">Concepto</label>
+                        <div id="txtConcepto"></div>
 
-                        <label for="txtTotal">Total</label>
-                        <input type="text" disabled name="txtTotal" id="txtTotal"/>
+                        <label for="txtTotal" style="font-weight: bold;">Total</label>
+                        <div id="txtTotal"></div>
 
-                         <label for="txtMoneda">Moneda</label>
-                        <input type="text" disabled name="txtMoneda" id="txtMoneda"/>
+                         <label for="txtMoneda" style="font-weight: bold;">Moneda</label>
+                        <div id="txtMoneda"></div>
 
                         <a class ="ui-btn" onclick="save();">Aprobar</a>
                     
@@ -63,12 +63,11 @@ and open the template in the editor.
                             return;
 
                         $(data).find("Table").each(function() {
-                            $("#imgLoader").css("display","none");
                             var objNode = $(this);
-                            $("#txtFolio").val(objNode.find("intFolio").text());
-                            $("#txtProveedor").val(objNode.find("strProveedor").text());
-                            $("#txtConcepto").val(objNode.find("strConcepto").text());
-                            $("#txtTotal").val(numberWithCommas(objNode.find("dblTotal").text()));
+                            $("#txtFolio").html(objNode.find("intFolio").text());
+                            $("#txtProveedor").html(objNode.find("strProveedor").text());
+                            $("#txtConcepto").html(objNode.find("strConcepto").text());
+                            $("#txtTotal").html(numberWithCommas(objNode.find("dblTotal").text()));
                         });
                         loaderspin.stop();
                     }
