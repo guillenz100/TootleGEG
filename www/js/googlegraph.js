@@ -60,6 +60,7 @@ function initGraph(){
 
 
 function callAjax() {
+    loaderspin.start("canvasLoader");
     var intCount = 0;
     $.post(GURL, { intEmpresa: "1", intConsulta: "37" }, null, "text")
         .done(function(data) {
@@ -108,6 +109,7 @@ function callAjax() {
                     hAxis: { minValue: 0, maxValue: GMAXVALUE }
                 };
                 init(true);
+                loaderspin.stop();
             })
         }
     );
