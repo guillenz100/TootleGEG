@@ -7,12 +7,11 @@
         <script src="http://code.jquery.com/jquery-1.11.3.min.js"></script>
         <script src="http://code.jquery.com/mobile/1.4.5/jquery.mobile-1.4.5.min.js"></script>
         <link href="css/global.css" rel="stylesheet" type="text/css"/>
+        <script src="js/database.js" type="text/javascript"></script>
         <script src="js/utils.js" type="text/javascript"></script>
     </head>
     <body>
-        <div class="logo" id="imgLogo"> 
-            <img src="img/logo.png"  alt=""  />
-        </div>
+        
         <script>
             function verSolicitud(id){
                 sessionStorage.setItem("idsolicitud",id);
@@ -65,12 +64,35 @@
             window.addEventListener('orientationchange', doOnOrientationChange);
           
         </script>
-        <div data-role="page" id="pageone" style="display:none;"  class="app">
+        <div data-role="page" id="pagelogin" class="app"> 
+            <div data-role="content">
+                <div> 
+                    <img src="img/logo.png"  alt=""  />
+                </div>
+                <form class="ui-body ui-body-b">
+                <div class="ui-field-contain" data-role='fieldcontain'>
+
+                    <label for="txtUsuario">Usuario:</label>
+                    <input type="text" name="txtUsuario" placeholder="Usuario" id="txtUsuario"/>
+
+                    <label for="txtPassword">Password:</label>
+                    <input type="password" name="txtPassword" id="txtPassword"/>
+                    <label for="btnAcceder"></label>
+                    <a class="ui-btn ui-btn-b" href="#pagemain">Acceder</a>
+                </div>
+                </form>
+                
+            </div> 
+        </div>
+        <div data-role="page" id="pagemain"   class="app">
             <div data-role="header" data-theme="b" id='divHeader'  data-position="fixed">
                 <a  id='hHeaderRef'  data-icon="home">home</a>
                 <h1 id='hHeader'></h1>
             </div>
-            <div data-role="main" id="main" class="ui-content">
+            <div class="logo" id="imgLogo"> 
+                <img src="img/logo.png"  alt=""  />
+            </div>
+            <div data-role="content" id="main" class="ui-content">
             </div>
             <div data-role="footer" id="barfooter" data-position="fixed">
                 <div data-role="navbar" >
@@ -84,6 +106,7 @@
                 </div>
             </div>
         </div> 
+        
         <script src="js/index.js" type="text/javascript"></script>
     </body>
 </html>
