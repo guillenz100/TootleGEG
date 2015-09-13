@@ -19,15 +19,17 @@ and open the template in the editor.
     </head>
     <body>
         <div data-role='page' class="app">
-            <form >
-                    <label for="txtUsuario">Usuario:</label>
-                    <input type="text" name="txtUsuario" id="txtUsuario"/>
-                    <label for="txtPassword">Password:</label>
-                    <input type="password" name="txtPassword" id="txtPassword"/>
-                    <a class ="ui-btn" onclick="save();">Guardar</a>
-                    <a class ="ui-btn" onclick="eliminar();">Eliminar</a>
+            <div data-role="content">
+                <form>
+                        <label for="txtUsuario">Usuario:</label>
+                        <input type="text" name="txtUsuario" id="txtUsuario"/>
+                        <label for="txtPassword">Password:</label>
+                        <input type="password" name="txtPassword" id="txtPassword"/>
+                        <a class ="ui-btn" onclick="save();">Guardar</a>
+                        <a class ="ui-btn" onclick="eliminar();">Eliminar</a>
 
-            </form>
+                </form>
+            </div>
         </div>
          <script type="text/javascript">
              
