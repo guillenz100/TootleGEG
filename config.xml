@@ -31,7 +31,7 @@
     
     
     <preference name="SplashScreenDelay" value="10000" />
-    <gap:splash src="www/res/Default~iphone.png"/>
+    <gap:splash src="res/Default~iphone.png" gap:platform="ios" />
     
     <gap:plugin name="org.apache.cordova.splashscreen" version="0.3.4" />
     
