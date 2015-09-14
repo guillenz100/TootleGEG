@@ -69,6 +69,7 @@ function database_Delete(tx) {
 }
 
 function database_Save(tx) {
+    tx.executeSql('DELETE FROM tbUsuario');
     tx.executeSql('INSERT INTO tbUsuario (strUsuario) VALUES (\"'+database_usuario+'\")');
 }
 

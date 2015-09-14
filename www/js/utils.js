@@ -11,14 +11,18 @@ function parseXML(objData) {
         objData = $.parseXML(objData);
         $(objData).find("Error").each(function () {
             var objNode = $(this);
-            $("#alert div").html(objNode.find("Descripcion").text());
-            $( "#alert" ).popup( "open" );
+            utils_alert(objNode.find("Descripcion").text());
             return null;
         });
         return objData;
     } catch (e) {
        alert(e); 
     }
+}
+
+function utils_alert(str){
+       $("#alert div").html(str);
+       $( "#alert" ).popup( "open" );
 }
 
 function numberWithCommas(x) {

@@ -12,12 +12,10 @@ var app = {
     },
     start:function(){
         if(!database.existeUsuario()){
-            //$("#pagelogin").css("display","block");
-            document.location="#pagemain";
+            $("#txtUsuario").val("");
         }
         else{
             $("#txtUsuario").val(database.usuario());
-           //document.location="#pagemain";
         }
         
     }

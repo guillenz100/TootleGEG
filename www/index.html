@@ -65,6 +65,7 @@
 
             window.addEventListener('orientationchange', doOnOrientationChange);
             
+            
             function acceder(){
                 loaderspin.start("canvasLoader");
                 security.functionEnd(acceder_ok);
@@ -75,10 +76,28 @@
             function acceder_ok(){
                 loaderspin.stop();
                 if (security.valido()){
-                    window.location="#pagemain";
+                    //Inicializamos bd
+                    database.queryEnd(do_save);
+                    database.initialize();
                 }
             }
           
+            function do_save(error){
+                if (error==null){
+                    //Guardamos el usuario
+                    database.queryEnd(saveOK);
+                    database.save($("#txtUsuario").val());
+                }else{
+                    utils_alert("Error al Inicializar "+error);
+                }
+            }
+            function saveOK(error){
+                if (error==null)
+                    window.location="#pagemain";
+                else
+                    utils_alert("Error al guardar:"+error);
+            }
+            
         </script>
         <div data-role="page" id="pagelogin" class="app"> 
             <div data-role="popup" id="alert" class="ui-content" style="max-width:280px" data-dismissible="false">
@@ -122,7 +141,7 @@
                         <li><a href="javascript:loadPage('aprobar.html','window_scrollable','Aprobar','home');"  data-theme="a" data-icon="tag">Aprobar</a></li>
                         <li><a href="javascript:loadPage('autorizar.html','window_scrollable','Autorizar','home');"  data-theme="a" data-icon="check">Autorizar</a></li>
                         <li><a href="javascript:loadPage('chart_transferencias.html','window_seamless','Transferencias','home');"   data-theme="a" data-icon="bars">Transferencias</a></li>
-                        <li><a href="javascript:loadPage('configurar.html','window_seamless','Configurar','home');"   data-theme="a" data-icon="gear">Config</a></li>
+                      <!--  <li><a href="javascript:loadPage('configurar.html','window_seamless','Configurar','home');"   data-theme="a" data-icon="gear">Config</a></li> -->
                     </ul>
                 </div>
             </div>
