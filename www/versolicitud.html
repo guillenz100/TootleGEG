@@ -54,6 +54,7 @@ and open the template in the editor.
             $( document ).ready(function() {
                 GSERVERURL += "16&param0="+sessionStorage.getItem("idsolicitud");
                 callAjax();
+                $("#btnAccion").html(sessionStorage.getItem("action"));
                 //alert(JSON.stringify(window.location, null, '  '));
             });
 
@@ -88,7 +89,7 @@ and open the template in the editor.
                         $(data).find("Table").each(function() {
                             var objNode = $(this);
                             if (objNode.find("Result").text()=="OK"){
-                                utils_alert("Cambio realizado");
+                                utils_alert(objNode.find("Message").text());
                                 $('#btnAccion').css("display","none");
                             }
                         });

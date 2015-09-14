@@ -28,10 +28,11 @@
                 
                 var strURLBack="javascript:loadPage('home','window_seamless','Inicio','home');";
                 var strIconBack="home";
-                if (strKeyBack==="Aprobar"){
+                if (strKeyBack!=="home"){
                     strIconBack="carat-l";
-                    strURLBack="javascript:loadPage('aprobar.html','window_scrollable','Aprobar','home');";
+                    strURLBack="javascript:loadPage('aprobar.html','window_scrollable','"+strKeyBack+"','home');";
                 }
+                
                         
                 if (strPage==="home"){
                     $("#imgLogo").css('display','block');
