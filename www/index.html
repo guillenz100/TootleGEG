@@ -73,7 +73,6 @@
             }
             
             function acceder_ok(){
-                
                 loaderspin.stop();
                 if (security.valido()){
                     window.location="#pagemain";
@@ -82,10 +81,19 @@
           
         </script>
         <div data-role="page" id="pagelogin" class="app"> 
+            <div data-role="popup" id="alert" class="ui-content" style="max-width:400px" data-dismissible="false">
+                <ul data-role="listview" data-inset="true">
+                    <li data-role="list-divider">
+                    <center>Alerta</center>
+                    </li>
+                    <li></li> 
+                </ul>
+                <a href="#" data-rel="back" class="ui-btn">Aceptar</a>
+            </div>
             <canvas id="canvasLoader" height="200" width="200" style="background:transparent;z-index: 2;display: none;" class="loader" ></canvas>
             <div data-role="content">
                 <div> 
-                    <img src="img/logo.png"  alt=""  />
+                    <img src="img/logo.png"   alt=""  />
                 </div>
                 <form>
                 <div class="ui-field-contain" data-role='fieldcontain'>
