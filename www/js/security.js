@@ -27,6 +27,7 @@ security_usuariovalido=null;
 function security_call() {
     $.post(security_url, { intEmpresa: "1", intConsulta: "0" }, null, "text")
         .done(function(data) {
+            security_usuariovalido=null;    
             data = parseXML(data);
             if(data==null)
                 return;
