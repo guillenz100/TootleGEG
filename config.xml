@@ -32,5 +32,5 @@
     <preference name="SplashScreenDelay" value="10000" />
     
     <gap:plugin name="org.apache.cordova.splashscreen" version="0.3.4" />
-    <gap:splash src="res/Default~iphone.png"/>
+    <gap:splash src="resources/Default~iphone.png"/>
 </widget>
