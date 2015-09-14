@@ -28,9 +28,10 @@
     <preference name="DisallowOverscroll" value="true"/>
     <preference name="Fullscreen" value="true" />
     
-    <!--
+    
     <preference name="SplashScreen" value="res/Default~iphone.png" />
     <preference name="SplashScreenDelay" value="10000" />
+    <!--
     <gap:splash src="res/Default~iphone.png"/>
     -->
     <gap:plugin name="org.apache.cordova.splashscreen" version="0.3.4" />
