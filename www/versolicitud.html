@@ -36,12 +36,16 @@ and open the template in the editor.
 
                         <label for="txtConcepto" style="font-weight: bold;">Concepto</label>
                         <div id="txtConcepto"></div>
-
+                        
+                        <label for="txtFacturas" style="font-weight: bold;">Facturas</label>
+                        <div id="txtFacturas"></div>
+                        
                         <label for="txtTotal" style="font-weight: bold;">Total</label>
                         <div id="txtTotal"></div>
 
                          <label for="txtMoneda" style="font-weight: bold;">Moneda</label>
                         <div id="txtMoneda"></div>
+                        
 
                         <a class="ui-btn" id="btnAccion"  onclick="accion();">Aprobar</a>
                     
@@ -71,6 +75,8 @@ and open the template in the editor.
                             $("#txtFolio").html(objNode.find("intFolio").text());
                             $("#txtProveedor").html(objNode.find("strProveedor").text());
                             $("#txtConcepto").html(objNode.find("strConcepto").text());
+                            $("#txtMoneda").html(objNode.find("strMoneda").text());
+                            $("#txtFacturas").html(objNode.find("strFacturas").text());
                             $("#txtTotal").html(numberWithCommas(objNode.find("dblTotal").text()));
                         });
                         loaderspin.stop();
