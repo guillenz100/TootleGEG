@@ -29,7 +29,7 @@
     <preference name="Fullscreen" value="true" />
     
     
-    <preference name="SplashScreen" value="screen" />
+    <preference name="SplashScreen" value="splash" />
     <preference name="SplashScreenDelay" value="10000" />
     <gap:splash src="res/splash.png" />
     <gap:plugin name="org.apache.cordova.splashscreen" version="0.3.4" />
