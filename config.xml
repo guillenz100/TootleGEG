@@ -27,8 +27,10 @@
     </platform>
     <preference name="DisallowOverscroll" value="true"/>
     <preference name="Fullscreen" value="true" />
+    
     <preference name="SplashScreen" value="icon.png" />
     <preference name="SplashScreenDelay" value="10000" />
     
     <gap:plugin name="org.apache.cordova.splashscreen" version="0.3.4" />
+    <gap:splash src="res/icon.png"/>
 </widget>
