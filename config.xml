@@ -26,5 +26,6 @@
     </platform>
     <preference name="DisallowOverscroll" value="true"/>
     <preference name="Fullscreen" value="true" />
-    <preference name="SplashScreen" value="none"/>
+    <preference name="SplashScreen" value="icon.png" />
+    <preference name="SplashScreenDelay" value="10000" />
 </widget>
