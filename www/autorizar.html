@@ -1,100 +1,103 @@
 <!DOCTYPE html>
+<!--
+To change this license header, choose License Headers in Project Properties.
+To change this template file, choose Tools | Templates
+and open the template in the editor.
+-->
 <html>
-<head>
-  <meta charset="utf-8">
-  <meta name="viewport" content="initial-scale=1.0, user-scalable=no">
-  <meta name="apple-mobile-web-app-capable" content="yes">
-  <meta name="apple-mobile-web-app-status-bar-style" content="black">
-  <title>Solicitudes por Autorizar</title>
-  <link rel="stylesheet" href="http://code.jquery.com/mobile/1.4.5/jquery.mobile-1.4.5.min.css">
+    <head>
+        <meta charset="utf-8">
+        <meta name="viewport" content="initial-scale=1.0, user-scalable=no">
+        <meta name="apple-mobile-web-app-capable" content="yes">
+        <meta name="apple-mobile-web-app-status-bar-style" content="black">
+        <title>Configurar</title>
+         <link rel="stylesheet" href="http://code.jquery.com/mobile/1.4.5/jquery.mobile-1.4.5.min.css">
     <script src="http://code.jquery.com/jquery-1.11.3.min.js"></script>
     <script src="http://code.jquery.com/mobile/1.4.5/jquery.mobile-1.4.5.min.js"></script>
-  <script src="js/utils.js" type="text/javascript"></script>
-  <script src="js/loaderspin.js" type="text/javascript"></script>
-  <link href="css/global.css" rel="stylesheet" type="text/css"/>
-</head>
-<body>
-<!-- Home -->
-<div data-role="page" id="page1" class="app" >
-    <canvas id="canvasLoader" height="200" width="200" style="background:transparent;z-index: 2;display: none;" class="loader" ></canvas>
-    <ul data-role="listview" data-autodividers="true" id="listFacturas" data-filter="false"  data-inset="true">
-    </ul>
-</div>
-<script>
-    
-    var GSTRDATOS;
-    var GBLINFORMACIONCARGADA=false;
-    
-    GSERVERURL +="15";
-    
-    function localData(){
-        $('#listFacturas').empty();
-        document.querySelector('#listFacturas').innerHTML=GSTRDATOS;
-        $('#listFacturas').listview('refresh');
-    }
-    
-    function getData(){
-         if (!GBLINFORMACIONCARGADA){
-            callAjax();
-        }else{
-            localData();
-        }
-    }
-  
-    function callAjax() {
-        $.post(GSERVERURL, { intEmpresa: "1", intConsulta: "37" }, null, "text")
-            .done(function(data) {
-                data = parseXML(data);
-                if(data==null)
-                        return;
-                $('#listFacturas').empty();
-                $(data).find("Table").each(function() {
-                    var objOT = $(this);
-                        document.querySelector('#listFacturas').innerHTML += 
-                                "<li group='"+objOT.find("strGrupo").text()+"'>"+
-                                "<a href='javascript:parent.verSolicitud("+objOT.find("intSolicitudChequeEnc").text()+");'>"+
-                                "<h3>" +objOT.find("strProveedor").text()+"</h3>"+
-                                "<p>Concepto "+objOT.find("strConcepto").text()+"</p>"+
-                                "<p>Fecha "+objOT.find("datFechaSolicitud").text()+"</p>"+
-                                "<p>Total "+numberWithCommas(objOT.find("dblTotal").text())+"</p>"+
-                                "</a>"
-                                "</li>";
-                        
-                   
-                })
-                GSTRDATOS=document.querySelector('#listFacturas').innerHTML;
-                $( "#listFacturas" ).listview({
-                    autodividers: true,
-                    autodividersSelector: function ( li ) {
-                      var out = li.attr('group');
-                      return out;
-                    }
-                  });
-                $('#listFacturas').listview('refresh');
-                GBLINFORMACIONCARGADA=true;
-                loaderspin.stop();
-            }
-        );
-    }
-    
-   $( document ).ready(function() {
-       loaderspin.start("canvasLoader");
-        getData();
-    });
+        <script src="js/utils.js" type="text/javascript"></script>
+        <link href="css/global.css" rel="stylesheet" type="text/css"/>
+        <script src="js/loaderspin.js" type="text/javascript"></script>
+    </head>
+    <body>
+        <div data-role="page" class="app">
+              <div data-role="popup" id="alert" class="ui-content" style="max-width:280px" data-dismissible="false">
+                    <div></div> 
+                <a href="#" data-rel="back" class="ui-btn">Aceptar</a>
+            </div>
+            <canvas id="canvasLoader" height="200" width="200" style="background:transparent;z-index: 2;display: none;" class="loader" ></canvas>
+            <div data-role="content">
+                <form>
+                  
+                        <label for="txtFolio" style="font-weight: bold;">Folio</label>
+                        <div id="txtFolio"></div>
 
-    function doOnOrientationChange(){
-        switch (window.orientation){
-        case - 90:
-            case 90:
-                getData();
-                break;
-            default:
-                getData();
-                break;
-        }
-    }
-    window.addEventListener('orientationchange', doOnOrientationChange);
-    
-</script>
-</body>
+                        <label for="txtProveedor" style="font-weight: bold;">Proveedor</label>
+                        <div id="txtProveedor"></div>
+
+                        <label for="txtConcepto" style="font-weight: bold;">Concepto</label>
+                        <div id="txtConcepto"></div>
+
+                        <label for="txtTotal" style="font-weight: bold;">Total</label>
+                        <div id="txtTotal"></div>
+
+                         <label for="txtMoneda" style="font-weight: bold;">Moneda</label>
+                        <div id="txtMoneda"></div>
+
+                        <a class="ui-btn" id="btnAccion"  onclick="accion();">Aprobar</a>
+                    
+            </form>
+            </div>
+        </div>
+   
+        <script>
+        
+            $( document ).ready(function() {
+                GSERVERURL += "15&param0="+sessionStorage.getItem("idsolicitud");
+                callAjax();
+                //alert(JSON.stringify(window.location, null, '  '));
+            });
+
+
+            function callAjax() {
+                loaderspin.start("canvasLoader");
+                $.post(GSERVERURL, { intEmpresa: "1", intConsulta: "37" }, null, "text")
+                    .done(function(data) {
+                        data = parseXML(data);
+                        if(data==null)
+                            return;
+                        $(data).find("Table").each(function() {
+                            var objNode = $(this);
+                            $("#txtFolio").html(objNode.find("intFolio").text());
+                            $("#txtProveedor").html(objNode.find("strProveedor").text());
+                            $("#txtConcepto").html(objNode.find("strConcepto").text());
+                            $("#txtTotal").html(numberWithCommas(objNode.find("dblTotal").text()));
+                        });
+                        loaderspin.stop();
+                    }
+                );
+            }
+
+            function accion(){
+                var serverurl = GSERVERURL+"&action=solicitudcheque_autorizar&param1="+sessionStorage.getItem("user")+"&param2="+sessionStorage.getItem("password");
+                loaderspin.start("canvasLoader");
+                $.post(serverurl, { intEmpresa: "1", intConsulta: "37" }, null, "text")
+                    .done(function(data) {
+                        data = parseXML(data);
+                        if(data==null)
+                            return;
+                        $(data).find("Table").each(function() {
+                            var objNode = $(this);
+                            if (objNode.find("Result").text()=="OK"){
+                                utils_alert("Cambio realizado");
+                                $('#btnAccion').css("display","none");
+                            }
+                        });
+                        loaderspin.stop();
+                    }
+                );
+                
+            }
+
+        </script>
+    </body>
 </html>

@@ -6,6 +6,7 @@
 
 var GSERVERURL = "http://www.tootleerp.com/TootleCFDEnterprise/TootleCFDUI/Utilerias/Post.aspx?intEmpresa=1&intConsulta=";
 
+
 function parseXML(objData) {
     try {
         objData = $.parseXML(objData);
@@ -16,7 +17,7 @@ function parseXML(objData) {
         });
         return objData;
     } catch (e) {
-       alert(e); 
+       utils_alert(e);
     }
 }
 

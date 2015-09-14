@@ -15,6 +15,10 @@
     <body>
         
         <script>
+             $( document ).ready(function() {
+                $("#txtPassword").focus();
+             });
+
             function verSolicitud(id){
                 sessionStorage.setItem("idsolicitud",id);
                 loadPage("versolicitud.html","window_scrollable","Aprobar","Aprobar");
@@ -92,8 +96,11 @@
                 }
             }
             function saveOK(error){
-                if (error==null)
+                if (error==null){
+                    sessionStorage.setItem("user",$("#txtUsuario").val());
+                    sessionStorage.setItem("password",$("#txtPassword").val());
                     window.location="#pagemain";
+                }
                 else
                     utils_alert("Error al guardar:"+error);
             }
