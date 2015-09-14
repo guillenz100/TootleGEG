@@ -28,9 +28,16 @@ and open the template in the editor.
             <div data-role="content">
                 <form>
                   
-                        <label for="txtFolio" style="font-weight: bold;">Folio</label>
-                        <div id="txtFolio"></div>
-
+                    <div class="ui-grid-a">
+                        <div class="ui-block-a">
+                            <label for="txtFolio" style="font-weight: bold;">Folio</label>
+                            <div id="txtFolio"></div>
+                        </div>
+                        <div class="ui-block-b">
+                            <label for="txtFecha" style="font-weight: bold;">Fecha</label>
+                            <div id="txtFecha"></div>
+                        </div>
+                    </div>
                         <label for="txtProveedor" style="font-weight: bold;">Proveedor</label>
                         <div id="txtProveedor"></div>
 
@@ -40,12 +47,15 @@ and open the template in the editor.
                         <label for="txtFacturas" style="font-weight: bold;">Facturas</label>
                         <div id="txtFacturas"></div>
                         
-                        <label for="txtTotal" style="font-weight: bold;">Total</label>
-                        <div id="txtTotal"></div>
-
-                         <label for="txtMoneda" style="font-weight: bold;">Moneda</label>
-                        <div id="txtMoneda"></div>
-                        
+                         <div class="ui-grid-a">
+                            <div class="ui-block-a">
+                            <label for="txtTotal" style="font-weight: bold;">Total</label>
+                            <div id="txtTotal"></div>
+                            </div>
+                            <div class="ui-block-b">
+                             <label for="txtMoneda" style="font-weight: bold;">Moneda</label>
+                            <div id="txtMoneda"></div>
+                        </div>
 
                         <a class="ui-btn" id="btnAccion"  onclick="accion();">Aprobar</a>
                     
@@ -77,6 +87,7 @@ and open the template in the editor.
                             $("#txtConcepto").html(objNode.find("strConcepto").text());
                             $("#txtMoneda").html(objNode.find("strMoneda").text());
                             $("#txtFacturas").html(objNode.find("strFacturas").text());
+                            $("#txtFecha").html(objNode.find("datFechaSolicitud").text());
                             $("#txtTotal").html(numberWithCommas(objNode.find("dblTotal").text()));
                         });
                         loaderspin.stop();
