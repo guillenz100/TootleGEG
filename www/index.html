@@ -19,9 +19,10 @@
                 $("#txtPassword").focus();
              });
 
-            function verSolicitud(id){
+            function verSolicitud(id,action){
                 sessionStorage.setItem("idsolicitud",id);
-                loadPage("versolicitud.html","window_scrollable","Aprobar","Aprobar");
+                sessionStorage.setItem("action",action);
+                loadPage("versolicitud.html","window_scrollable",action,action);
             }
             function loadPage(strPage, strClass, strText, strKeyBack) {
                 

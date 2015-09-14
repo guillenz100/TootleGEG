@@ -78,7 +78,7 @@ and open the template in the editor.
             }
 
             function accion(){
-                var serverurl = GSERVERURL+"&action=solicitudcheque_aprobar&param1="+sessionStorage.getItem("user")+"&param2="+sessionStorage.getItem("password");
+                var serverurl = GSERVERURL+"&action=solicitudcheque_"+sessionStorage.getItem("action")+"&param1="+sessionStorage.getItem("user")+"&param2="+sessionStorage.getItem("password");
                 loaderspin.start("canvasLoader");
                 $.post(serverurl, { intEmpresa: "1", intConsulta: "37" }, null, "text")
                     .done(function(data) {
