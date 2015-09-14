@@ -16,7 +16,7 @@
         
         <script>
              $( document ).ready(function() {
-                $("#txtPassword").focus();
+               // $("#txtPassword").focus();
              });
 
             function verSolicitud(id,action){
@@ -30,7 +30,7 @@
                 var strIconBack="home";
                 if (strKeyBack!=="home"){
                     strIconBack="carat-l";
-                    strURLBack="javascript:loadPage('aprobar.html','window_scrollable','"+strKeyBack+"','home');";
+                    strURLBack="javascript:loadPage('"+strKeyBack.toLowerCase()+".html','window_scrollable','"+strKeyBack+"','home');";
                 }
                 
                         
