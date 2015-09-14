@@ -11,7 +11,7 @@ function parseXML(objData) {
         objData = $.parseXML(objData);
         $(objData).find("Error").each(function () {
             var objNode = $(this);
-            $("#alert li:last-child").html(objNode.find("Descripcion").text());
+            $("#alert div").html(objNode.find("Descripcion").text());
             $( "#alert" ).popup( "open" );
             return null;
         });
