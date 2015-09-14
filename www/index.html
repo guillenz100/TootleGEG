@@ -26,22 +26,25 @@
             }
             function loadPage(strPage, strClass, strText, strKeyBack) {
                 
-                var strURLBack="javascript:loadPage('home','window_seamless','Inicio','home');";
+                var strURLBack="javascript:loadPage('Inicio','window_seamless','Inicio','Cerrar');";
                 var strIconBack="home";
-                if (strKeyBack!=="home"){
+                
+                if (strKeyBack!=="Inicio"){
                     strIconBack="carat-l";
-                    strURLBack="javascript:loadPage('"+strKeyBack.toLowerCase()+".html','window_scrollable','"+strKeyBack+"','home');";
+                    strURLBack="javascript:loadPage('"+strKeyBack.toLowerCase()+".html','window_scrollable','"+strKeyBack+"','Inicio');";
                 }
                 
-                        
-                if (strPage==="home"){
+                if (strPage==="Inicio"){
                     $("#imgLogo").css('display','block');
                     $("#main").empty();
+                    strIconBack="power";
+                    strURLBack="#pagelogin";
                 }else{
                    $("#imgLogo").css('display','none');
                     $("#main").empty();
                     $("#main").append("<iframe id='ifr' frameborder='0' class='"+strClass+"'  src='" + strPage + "' />");
                 }
+                
                 $("#hHeader").empty();
                 $("#hHeader").append(strText);
                 
@@ -101,6 +104,7 @@
                 if (error==null){
                     sessionStorage.setItem("user",$("#txtUsuario").val());
                     sessionStorage.setItem("password",$("#txtPassword").val());
+                    $("#txtPassword").val("");
                     window.location="#pagemain";
                 }
                 else
@@ -135,8 +139,8 @@
         </div>
         <div data-role="page" id="pagemain"   class="app">
             <div data-role="header" data-theme="a" id='divHeader'  data-position="fixed">
-                <a  id='hHeaderRef'  data-icon="home">home</a>
-                <h1 id='hHeader'></h1>
+                <a  id='hHeaderRef' href="#pagelogin"  data-icon="power">Cerrar</a>
+                <h1 id='hHeader'>Inicio</h1>
             </div>
             <div class="logo" id="imgLogo"> 
                 <img src="img/logo.png"  alt=""  />
@@ -146,10 +150,10 @@
             <div data-role="footer" id="barfooter" data-position="fixed">
                 <div data-role="navbar" >
                     <ul>
-                        <li><a href="javascript:loadPage('home','window_seamless','Inicio','home');" data-theme="a" data-icon="home">Inicio</a></li>
-                        <li><a href="javascript:loadPage('aprobar.html','window_scrollable','Aprobar','home');"  data-theme="a" data-icon="tag">Aprobar</a></li>
-                        <li><a href="javascript:loadPage('autorizar.html','window_scrollable','Autorizar','home');"  data-theme="a" data-icon="check">Autorizar</a></li>
-                        <li><a href="javascript:loadPage('chart_transferencias.html','window_seamless','Transferencias','home');"   data-theme="a" data-icon="bars">Transferencias</a></li>
+                        <li><a href="javascript:loadPage('Inicio','window_seamless','Inicio','Cerrar');" data-theme="a" data-icon="home">Inicio</a></li>
+                        <li><a href="javascript:loadPage('aprobar.html','window_scrollable','Aprobar','Inicio');"  data-theme="a" data-icon="tag">Aprobar</a></li>
+                        <li><a href="javascript:loadPage('autorizar.html','window_scrollable','Autorizar','Inicio');"  data-theme="a" data-icon="check">Autorizar</a></li>
+                        <li><a href="javascript:loadPage('chart_transferencias.html','window_seamless','Transferencias','Inicio');"   data-theme="a" data-icon="bars">Transferencias</a></li>
                       <!--  <li><a href="javascript:loadPage('configurar.html','window_seamless','Configurar','home');"   data-theme="a" data-icon="gear">Config</a></li> -->
                     </ul>
                 </div>
