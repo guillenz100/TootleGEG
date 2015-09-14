@@ -26,4 +26,5 @@
     </platform>
     <preference name="DisallowOverscroll" value="true"/>
     <preference name="Fullscreen" value="true" />
+    <preference name="SplashScreen" value="none"/>
 </widget>
