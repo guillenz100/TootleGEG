@@ -155,16 +155,16 @@ google.load("visualization", "1", { packages: ["corechart"] });
 google.load("visualization", "1", { packages: ["table"] });
 
 
+var previousOrientation = window.orientation;
 function doOnOrientationChange(){
-    switch (window.orientation){
-    case - 90:
-        case 90:
-            init(false);
-            break;
-        default:
-            init(true);
-            break;
+    if(window.orientation !== previousOrientation){
+        previousOrientation = window.orientation;
+        init(false);
+    }else{
+        init(true);
     }
 }
+
+window.addEventListener("resize", checkOrientation, false);
 window.addEventListener('orientationchange', doOnOrientationChange);
-        
+setInterval(checkOrientation, 2000);        
