@@ -49,7 +49,7 @@
 }
 .window_seamless {
     position:fixed; 
-    top:6%; /*Espacio para el header*/ 
+    top:0px; /*Espacio para el header*/ 
     left:0px; 
     bottom:0px; 
     right:0px; 
