@@ -88,7 +88,7 @@ and open the template in the editor.
                             $("#txtMoneda").html(objNode.find("strMoneda").text());
                             $("#txtFacturas").html(objNode.find("strFacturas").text());
                             $("#txtFecha").html(objNode.find("datFechaSolicitud").text());
-                            $("#txtTotal").html(numberWithCommas(objNode.find("dblTotal").text()));
+                            $("#txtTotal").html(utils_numberWithCommas(objNode.find("dblTotal").text()));
                         });
                         loaderspin.stop();
                     }
