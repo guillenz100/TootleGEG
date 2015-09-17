@@ -72,7 +72,7 @@ function callAjax() {
                 var objNode = $(this);
                 if (GNUMEROCOLUMNAS == 2) {
                     if (GTIPO == 2) {
-                        GARR.push([objNode.find(GSTRFIELD1).text(), parseFloat(objNode.find(GSTRFIELD2).text()), colors[intCount], numberWithCommas(objNode.find(GSTRFIELD2).text())]);
+                        GARR.push([objNode.find(GSTRFIELD1).text(), parseFloat(objNode.find(GSTRFIELD2).text()), colors[intCount], utils_numberWithCommas(objNode.find(GSTRFIELD2).text())]);
                         GARR_empty.push([objNode.find(GSTRFIELD1).text(), 0, colors[intCount], ""]);
                         intCount++;
                     }
@@ -86,7 +86,7 @@ function callAjax() {
                 }
                 if (GNUMEROCOLUMNAS == 3) {
                     if (GTIPO == 2) {
-                        GARR.push([objNode.find(GSTRFIELD1).text(), parseFloat(objNode.find(GSTRFIELD2).text()), parseFloat(objNode.find(GSTRFIELD3).text()), numberWithCommas(objNode.find(GSTRFIELD3).text())]);
+                        GARR.push([objNode.find(GSTRFIELD1).text(), parseFloat(objNode.find(GSTRFIELD2).text()), parseFloat(objNode.find(GSTRFIELD3).text()), utils_numberWithCommas(objNode.find(GSTRFIELD3).text())]);
                         GARR_empty.push([objNode.find(GSTRFIELD1).text(), 0, 0, ""]);
                         intCount++;
                     }
