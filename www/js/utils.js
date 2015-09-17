@@ -26,7 +26,7 @@ function utils_alert(str){
        $( "#alert" ).popup( "open" );
 }
 
-function numberWithCommas(x) {
+function utils_numberWithCommas(x) {
     x = parseFloat(x).toFixed(2);
     return x.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ",");
 }
