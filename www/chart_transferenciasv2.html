@@ -74,8 +74,8 @@
         </div>
         <script>
             
-         var GARRLABEL = ["Data"];
-         var GARRSERIE1 = [0];
+         var GARRLABEL = [];
+         var GARRSERIE1 = [];
         GSERVERURL+="17";
      
         $( document ).ready(function() {
@@ -102,8 +102,6 @@
                     data = parseXML(data);
                     if(data==null)
                         return;
-                    GARRLABEL=[];
-                    GARRSERIE1=[];
                     $(data).find("Table").each(function() {
                         var objNode = $(this);
                         GARRLABEL.push(objNode.find("strMes").text());
