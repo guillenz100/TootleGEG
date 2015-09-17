@@ -12,25 +12,74 @@
         <script src="js/loaderspin.js" type="text/javascript"></script>
         <link href="css/chartist.min.css" rel="stylesheet" type="text/css"/>
         <style>
-        .fullsize {
-            animation: pulse 5s;
-          }
+        @keyframes width-pulse {
+  0% {
+    stroke-width: 6px
+  }
+  50% {
+    stroke-width: 14px;
+  }
+  100% {
+    stroke-width: 6px;
+  }
+}
+@keyframes dashoffset-seven {
+  0% {
+    stroke-dashoffset: 7px;
+  }
+  100% {
+    stroke-dashoffset: 0px;
+  }
+}
+@keyframes dasharray-craziness {
+  0% {
+    stroke-dasharray: 7px 2px;
+  }
+  80% {
+    stroke-dasharray: 7px 100px;
+    stroke-width: 10px
+  }
+  100% {
+    stroke-dasharray: 7px 2px;
+  }
+}
+.ct-chart .ct-label.ct-vertical,
+.ct-chart .ct-label.ct-horizontal {
+  color: rgba(255, 255, 255, 0.5);
+}
+.ct-chart .ct-grid.ct-vertical,
+.ct-chart .ct-grid.ct-horizontal {
+  stroke: rgba(255, 255, 255, 0.1);
+  stroke-dasharray: 2px;
+  shape-rendering: crispEdges;
+}
+.ct-chart .ct-series.ct-series-a .ct-line {
+  stroke: #4ECDC4;
+  stroke-width: 10px;
+  stroke-linecap: round;
+  animation: width-pulse 2s infinite;
+}
+.ct-chart .ct-series.ct-series-b .ct-line {
+  stroke: #C7F464;
+  stroke-width: 2px;
+  stroke-dasharray: 5px 2px;
+  animation: dashoffset-seven 200ms infinite linear;
+}
+.ct-chart .ct-series.ct-series-c .ct-line {
+  stroke: #FF6B6B;
+  stroke-width: 3px;
+  stroke-linecap: round;
+  stroke-dasharray: 30px 5px;
+  animation: dasharray-craziness 10s infinite linear;
+}
 
-          @keyframes pulse {
-            0% {
-              opacity:0;
-            }
-            100% {
-              opacity:100;
-            }
-          }
     </style>
     </head>
     
     <body>
         <div class="app fullsize">
             <canvas id="canvasLoader" height="200" width="200" style="background:transparent;z-index: 2;display: none;" class="loader" ></canvas>
-            <div id="divObject" class="fullsize">
+            <div id="divObject" class="ct-chart fullsize">
             </div>
         </div>
         <script>
@@ -51,7 +100,7 @@
                 series: [
                   GARRSERIE1
                 ],
-                showLabel:true
+                showValues:true
             };
             new Chartist.Line('#divObject', data);
         }
@@ -75,7 +124,27 @@
                 }
             );
         }
-            
+            var $tooltip = $('<div class="tooltip tooltip-hidden"></div>').appendTo($('.ct-chart'));
+
+$(document).on('mouseenter', '.ct-point', function() {
+  var seriesName = $(this).closest('.ct-series').attr('ct:series-name'),
+      value = $(this).attr('ct:value');
+
+  $tooltip.text(seriesName + ': ' + value);
+  $tooltip.removeClass('tooltip-hidden');
+});
+
+$(document).on('mouseleave', '.ct-point', function() {
+  $tooltip.addClass('tooltip-hidden');
+});
+
+$(document).on('mousemove', '.ct-point', function(event) {
+  $tooltip.css({
+    left: event.offsetX - $tooltip.width() / 2,
+    top: event.offsetY - $tooltip.height() - 20
+  });
+});
+
     
 
         </script>
