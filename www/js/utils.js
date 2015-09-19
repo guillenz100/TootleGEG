@@ -4,7 +4,7 @@
  * and open the template in the editor.
  */
 
-var GSERVERURL = "http://www.tootleerp.com/TootleCFDEnterprise/TootleCFDUI/Utilerias/Post.aspx?intEmpresa=1&intConsulta=";
+var GSERVERURL = "http://www.tootleerp.com/TootleCFDBancrea/TootleCFDUI/Utilerias/Post.aspx?intEmpresa=1&intConsulta=";
 
 
 function parseXML(objData) {
