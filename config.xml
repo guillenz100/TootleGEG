@@ -32,7 +32,7 @@
     <preference name="SplashScreen" value="splash" />
     <preference name="SplashScreenDelay" value="10000" />
     <gap:splash src="res/splash.png" />
-    <splash src="res/Default.png" width="320"  height="568" />
+    <splash src="res/Default.png" width="640"  height="1136" />
     <gap:plugin name="org.apache.cordova.splashscreen" version="0.3.4" />
     
     
