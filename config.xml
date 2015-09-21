@@ -32,6 +32,8 @@
     <preference name="SplashScreen" value="splash" />
     <preference name="SplashScreenDelay" value="10000" />
     
+    <gap:splash src="res/splash.png" gap:platform="ios" width="640" height="1136" />
+
     <!--
     <gap:splash src="res/splash.png" />
     <splash src="res/Default.png" width="640"  height="1136" />
