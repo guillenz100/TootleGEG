@@ -167,4 +167,4 @@ function doOnOrientationChange(){
 
 window.addEventListener("resize", doOnOrientationChange, false);
 window.addEventListener('orientationchange', doOnOrientationChange);
-setInterval(checkOrientation, 2000);        
+setInterval(doOnOrientationChange, 2000);        
