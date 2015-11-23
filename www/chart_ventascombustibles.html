@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html>
+    <head>
+
+        <meta name="format-detection" content="telephone=no">
+        <meta name="msapplication-tap-highlight" content="no">
+        <meta name="viewport" content="user-scalable=no, initial-scale=1, maximum-scale=1, minimum-scale=1, width=device-width">
+        <title>Ventas Combustibles</title>
+        <script type="text/javascript" src="https://www.google.com/jsapi?autoload={'modules':[{'name':'visualization','version':'1.1','packages':['bar']}]}"></script>
+        <script type="text/javascript" src="https://www.google.com/jsapi"></script>
+        <script type="text/javascript" src="cordova.js"></script>
+        <script src="http://code.jquery.com/jquery-1.10.2.js" type="text/javascript"></script>
+        <link href="css/global.css" rel="stylesheet" type="text/css"/>
+        <script src="js/utils.js" type="text/javascript"></script>
+        <script src="js/googlegraph.js" type="text/javascript"></script>
+        <script src="js/loaderspin.js" type="text/javascript"></script>
+    </head>
+    <body>
+        <div class="app fullsize">
+            <canvas id="canvasLoader" height="200" width="200" style="background:transparent;z-index: 2;display: none;" class="loader" ></canvas>
+            <div id="divObject" class="fullsize">
+            </div>
+        </div>
+        <script>
+            /*1 TABLA 2 GRAFICA*/
+            GTIPO = 2;
+            GNUMEROCOLUMNAS = 2;
+            GURL+= "8";
+            GSTRFIELD1 = "strMes";
+            GSTRFIELD2 = "dblTotal";
+            GMULTICOLOR=1;
+
+            initGraph();
+
+            
+        </script>
+    </body>
+</html>
