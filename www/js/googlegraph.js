@@ -159,9 +159,10 @@ var previousOrientation = window.orientation;
 function doOnOrientationChange(){
     if(window.orientation !== previousOrientation){
         previousOrientation = window.orientation;
-        init(true);
-    }else{
-        init(false);
+        if (window.orientation==90)
+            init(true);
+        else
+            init(false);
     }
 }
 
