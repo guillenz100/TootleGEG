@@ -6,7 +6,7 @@
     <description>
         Aplicación de Negocios - GEG
     </description>
-    <author email="jctz100@tootlesoft.com" href="http://www.tootlesoft.com">
+    <author email="jcgz100@tootlesoft.com" href="http://www.tootlesoft.com">
         TootleSoft
     </author>
     <content src="index.html"/>
@@ -18,6 +18,7 @@
     <allow-intent href="sms:*"/>
     <allow-intent href="mailto:*"/>
     <allow-intent href="geo:*"/>
+    <platform name="winphone" />
     <platform name="android">
         <allow-intent href="market:*"/>
     </platform>
