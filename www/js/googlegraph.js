@@ -155,7 +155,7 @@ google.load("visualization", "1", { packages: ["corechart"] });
 google.load("visualization", "1", { packages: ["table"] });
 
 
-var previousOrientation = window.orientation;
+var previousOrientation = -1;
 function doOnOrientationChange(){
     if(window.orientation !== previousOrientation){
         previousOrientation = window.orientation;
